@@ -26,15 +26,7 @@ class NewsEndpointStubs {
                 .willReturn(aResponse()
                 .withStatus(HttpStatus.OK.value())
                 .withHeader(HttpHeaders.CONTENT_TYPE, "application/json")
-                .withBody(getFileContent("stubs/NewsApiTopHeadlinesResponse.json"))))
-    }
-
-    static StubMapping stubNewsApiQueryForArticlesResponse() {
-        return stubFor(get(urlEqualTo(VALID_URL_QUERY_FOR_ARTICLES))
-                .willReturn(aResponse()
-                .withStatus(HttpStatus.OK.value())
-                .withHeader(HttpHeaders.CONTENT_TYPE, "application/json")
-                .withBody(getFileContent("stubs/OmdbApiResponse.json"))))
+                .withBody(getFileContent("stubs/OmdbApiResponse.json.json"))))
     }
 
     static StubMapping stubNewsApiNotResponding() {

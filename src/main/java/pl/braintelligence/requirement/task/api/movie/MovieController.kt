@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.*
 import pl.braintelligence.requirement.task.api.PublicEndpoint
 import pl.braintelligence.requirement.task.api.movie.dto.UpdateTimesAndPrices
 import pl.braintelligence.requirement.task.domain.movie.MovieService
-import pl.braintelligence.requirement.task.infrastructure.external.movie.dto.MovieDto
 
 @RestController
 @RequestMapping("/movies")
@@ -18,7 +17,7 @@ internal class ProjectCreatorController(
     @PublicEndpoint
     fun fetchMovieTimes(
             @PathVariable title: String
-    ): MovieDto? = movieService.fetchMovieTimes(title)
+    ): String? = movieService.fetchMovieTimes(title)
 
     @PutMapping
     @ResponseStatus(HttpStatus.CREATED)

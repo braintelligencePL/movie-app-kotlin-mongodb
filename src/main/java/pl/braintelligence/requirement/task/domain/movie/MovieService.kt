@@ -11,7 +11,8 @@ class MovieService(
 
     fun updateAndShowTimesPricesForMovies(): Any = TODO("not implemented")
 
-    fun fetchMovieTimes(title: String): MovieDto? = movieClient.getMovieByTitle(title)
+    fun fetchMovieTimes(title: String): String? =
+            movieClient.getMovieByTitle(title)?.runtime ?: "Coudn't find a movie"
 
 
 }
