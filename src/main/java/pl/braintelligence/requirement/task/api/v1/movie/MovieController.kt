@@ -1,19 +1,20 @@
-package pl.braintelligence.requirement.task.api.movie
+package pl.braintelligence.requirement.task.api.v1.movie
 
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
+import pl.braintelligence.requirement.task.api.v1.movie.dto.MovieDto
 import pl.braintelligence.requirement.task.domain.movie.MovieService
 
 @RestController
 @RequestMapping("/movies")
 internal class MovieController(
         private val movieService: MovieService
-) : MovieControllerApi {
+) : ApiMovieController {
 
-    @GetMapping("/{title}/times")
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    override fun fetchMovieTimes(
-            @PathVariable title: String
-    ): String? = movieService.fetchMovieTimes(title)
+    override fun fetchMovieByTitle(
+            @RequestParam(required = true) title: String
+    ): MovieDto? = movieService.fetchMovieByTitle(title)
 
 }

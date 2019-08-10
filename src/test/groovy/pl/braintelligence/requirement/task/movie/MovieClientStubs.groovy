@@ -10,7 +10,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*
 
 class MovieClientStubs {
 
-    private static final String VALID_URL_MOVIES = "/?apikey=test&t=someMovieTitle"
+    private static final String VALID_URL_MOVIES = "/?apikey=test&t=fast"
 
     static StubMapping stubMovieApiResponse() {
         return stubFor(get(urlEqualTo(VALID_URL_MOVIES))

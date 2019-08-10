@@ -1,14 +1,24 @@
 package pl.braintelligence.requirement.task.domain.movie
 
 import org.springframework.stereotype.Service
+import pl.braintelligence.requirement.task.api.v1.movie.dto.MovieDto
 import pl.braintelligence.requirement.task.infrastructure.external.movie.MovieClient
 
 @Service
 class MovieService(
-        val movieClient: MovieClient
+        private val movieClient: MovieClient
 ) {
 
-    fun fetchMovieTimes(title: String): String? =
-            movieClient.getMovieByTitle(title)?.runtime ?: "Couldn't find a movie"
+    fun fetchMovieByTitle(title: String): MovieDto? {
+        val movieApiResponse = fetchMovieFromApi(title)
+
+        return movieApiResponse?.let { MovieDto.toMovieDto(it) }
+    }
+
+    private fun queryForInternalRating(movieId: String?): InternalRating {
+        TODO("not implemented")
+    }
+
+    private fun fetchMovieFromApi(title: String) = movieClient.getMovieByTitle(title)
 
 }

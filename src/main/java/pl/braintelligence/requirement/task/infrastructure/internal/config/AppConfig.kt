@@ -16,7 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2
 @Configuration
 @EnableSwagger2
 @EnableConfigurationProperties
-class AppConfig {
+open class AppConfig {
 
     @Value("\${application.connectTimeout}")
     private val connectTimeout: Int = 0
@@ -25,13 +25,13 @@ class AppConfig {
     private val readTimeout: Int = 0
 
     @Bean
-    fun restTemplate(restTemplateBuilder: RestTemplateBuilder): RestTemplate = restTemplateBuilder
+    open fun restTemplate(restTemplateBuilder: RestTemplateBuilder): RestTemplate = restTemplateBuilder
             .setConnectTimeout(connectTimeout)
             .setReadTimeout(readTimeout)
             .build()
 
     @Bean
-    fun apiDocket(): Docket =
+    open fun apiDocket(): Docket =
             Docket(DocumentationType.SWAGGER_2)
                     .select()
                     .apis(RequestHandlerSelectors.any())
