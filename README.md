@@ -16,10 +16,12 @@ Go to: /run/edit_configurations/your_configuration/enviroment_variables
 API_KEY=your_api_key
 ```
 
+<br> 
+
 # Endpoints:
 To make easier for mobile developer there is only one endpoint that contains most of the information needed. Payload is not big so I guess that's good idea.
 
-`GET: /movies?title="Fast and the Furious"` -   
+`GET: /movies?title="Fast and the Furious"` 
 ```json
 {
     "id": "tt0232500",
@@ -45,10 +47,11 @@ To make easier for mobile developer there is only one endpoint that contains mos
             "value": "6.8"
         }
     ],
-    "internalReviews": [] // empty when user did not leave any review (review = review + rating)
+    "internalReviews": [] 
 }
 ```
 
+<br>
 
 ## REST API documentation
 ```bash
