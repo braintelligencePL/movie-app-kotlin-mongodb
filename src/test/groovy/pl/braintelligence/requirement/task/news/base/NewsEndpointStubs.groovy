@@ -34,7 +34,7 @@ class NewsEndpointStubs {
                 .willReturn(aResponse()
                 .withStatus(HttpStatus.OK.value())
                 .withHeader(HttpHeaders.CONTENT_TYPE, "application/json")
-                .withBody(getFileContent("stubs/NewsApiQueryForArticlesResponse.json"))))
+                .withBody(getFileContent("stubs/OmdbApiResponse.json"))))
     }
 
     static StubMapping stubNewsApiNotResponding() {

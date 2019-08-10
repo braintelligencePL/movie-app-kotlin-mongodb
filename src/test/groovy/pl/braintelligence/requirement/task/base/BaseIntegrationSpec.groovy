@@ -5,7 +5,7 @@ import com.github.tomakehurst.wiremock.junit.WireMockRule
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ActiveProfiles
 
-import pl.braintelligence.requirement.task.infrastructure.config.Profiles
+
 import spock.lang.Specification
 
 @SpringBootTest(
