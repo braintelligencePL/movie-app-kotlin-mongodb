@@ -2,6 +2,6 @@ application:
   connectTimeout: 5000
   readTimeout: 5000
 
-news-service:
-  top-headlines: https://newsapi.org/v2/top-headlines
-  api-key: YOUR_KEY
+omdb-api:
+  uri-base: http://www.omdbapi.com/
+  api-key: f9e3ccda

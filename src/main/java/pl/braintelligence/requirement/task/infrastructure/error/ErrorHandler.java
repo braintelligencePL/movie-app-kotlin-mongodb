@@ -12,6 +12,7 @@ import pl.braintelligence.requirement.task.domain.exceptions.InvalidEntityExcept
 import pl.braintelligence.requirement.task.domain.exceptions.MissingEntityException;
 import pl.braintelligence.requirement.task.domain.exceptions.InvalidAuthorizationException;
 import pl.braintelligence.requirement.task.domain.exceptions.utils.ErrorCode;
+import pl.braintelligence.requirement.task.infrastructure.error.exceptions.ClientException;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.invoke.MethodHandles;

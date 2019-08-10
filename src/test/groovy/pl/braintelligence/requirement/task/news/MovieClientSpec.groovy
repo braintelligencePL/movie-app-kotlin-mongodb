@@ -6,7 +6,7 @@ import pl.braintelligence.requirement.task.news.base.OperatingOnNewsEndpoint
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR
 import static pl.braintelligence.requirement.task.news.base.NewsEndpointStubs.stubNewsApiNotResponding
 
-class NewsClientSpec extends BaseIntegrationSpec implements OperatingOnNewsEndpoint {
+class MovieClientSpec extends BaseIntegrationSpec implements OperatingOnNewsEndpoint {
 
     def "Should return error when news-api isn't available"() {
         given: "prepare stub from news-api"
