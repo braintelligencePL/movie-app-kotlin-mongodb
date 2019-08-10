@@ -24,8 +24,7 @@ class MovieClientStubs {
         return stubFor(get(urlMatching(VALID_URL_MOVIES))
                 .willReturn(aResponse()
                         .withStatus(HttpStatus.UNAUTHORIZED.value())
-                        .withHeader(HttpHeaders.CONTENT_TYPE, "application/json")
-                        .withBody(getFileContent("stubs/InvalidMovieApiKeyResponse.json"))))
+                        .withHeader(HttpHeaders.CONTENT_TYPE, "application/json")))
     }
 
     static String getFileContent(String filename) throws IOException {

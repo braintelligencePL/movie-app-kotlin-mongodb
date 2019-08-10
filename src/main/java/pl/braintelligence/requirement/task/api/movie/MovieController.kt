@@ -1,8 +1,8 @@
-package pl.braintelligence.requirement.task.api.v1.movie
+package pl.braintelligence.requirement.task.api.movie
 
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
-import pl.braintelligence.requirement.task.api.v1.movie.dto.MovieDto
+import pl.braintelligence.requirement.task.api.movie.dto.MovieDto
 import pl.braintelligence.requirement.task.domain.movie.MovieService
 
 @RestController
