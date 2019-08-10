@@ -1,5 +1,7 @@
 # Movie application
 
+#### [![Build Status](https://travis-ci.com/braintelligencePL/movie-recruitment-task.svg?branch=master)](https://travis-ci.com/braintelligencePL/movie-recruitment-task) 
+
 # Prerequisites
 1. You need an API key. Provide it as an environment variable.
 
