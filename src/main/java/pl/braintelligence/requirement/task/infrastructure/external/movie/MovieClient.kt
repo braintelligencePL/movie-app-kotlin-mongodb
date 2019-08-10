@@ -22,7 +22,8 @@ class MovieClient(
         val targetUrl = UriComponentsBuilder.fromUriString(omdbApiUrl)
                 .queryParam("apikey", omdbApiKey)
                 .queryParam("t", title)
-                .build().toUri()
+                .build()
+                .toUri()
 
         logger.info("Getting movies with url={}", targetUrl)
 

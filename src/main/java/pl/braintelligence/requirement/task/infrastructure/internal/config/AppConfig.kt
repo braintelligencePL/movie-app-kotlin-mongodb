@@ -1,4 +1,4 @@
-package pl.braintelligence.requirement.task.infrastructure.config
+package pl.braintelligence.requirement.task.infrastructure.internal.config
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.context.properties.EnableConfigurationProperties

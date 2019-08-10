@@ -1,0 +1,7 @@
+application:
+  connectTimeout: 5000
+  readTimeout: 5000
+
+omdb-api:
+  uri-base: http://localhost.com
+  api-key: test
