@@ -1,6 +1,6 @@
 # Movie application
 
-#### [![Build Status](https://travis-ci.com/braintelligencePL/movie-recruitment-task.svg?branch=master)](https://travis-ci.com/braintelligencePL/movie-recruitment-task) 
+#### [![Build Status](https://travis-ci.org/braintelligencePL/movie-recruitment-task.svg?branch=master)](https://travis-ci.org/braintelligencePL/movie-recruitment-task) 
 
 # Prerequisites
 1. You need an API key. Provide it as an environment variable.
@@ -58,6 +58,8 @@ http://localhost:8080/api/swagger-ui.html
 # Things done:
 - merged imdbRating with Ratings as just one List of Ratings
 - there is internalRating=(our customer rating and review) and externalRating=(returned from movie-api - only rating)
+- CI - travis 
+
 
 # Things done (but not clear): 
 - I assumed that second point from Challenge `movie times` is meant for `movie time` meaning `Runtime` of one movie (not all Fast & Furious movies - seems pointless just to return all times of movies).
