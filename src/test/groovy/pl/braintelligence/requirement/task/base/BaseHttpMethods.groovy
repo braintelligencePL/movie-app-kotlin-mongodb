@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity
 
 import static org.springframework.http.HttpMethod.GET
 
-trait BaseHttpMethodsSpec {
+trait BaseHttpMethods {
 
     @Autowired
     TestRestTemplate restTemplate

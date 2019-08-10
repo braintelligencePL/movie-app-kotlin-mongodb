@@ -1,36 +1,40 @@
 package pl.braintelligence.requirement.task.infrastructure.external.movie
 
-import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Configuration
+import org.springframework.web.client.RestClientException
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.util.UriComponentsBuilder
+import pl.braintelligence.requirement.task.infrastructure.external.error.ApiResponseException
+import pl.braintelligence.requirement.task.infrastructure.external.error.ErrorCode
 import pl.braintelligence.requirement.task.infrastructure.external.movie.dto.MovieDto
-import java.lang.invoke.MethodHandles
-
+import pl.braintelligence.requirement.task.logger
 
 @Configuration
 @EnableConfigurationProperties
 class MovieClient(
         private val restTemplate: RestTemplate,
-        @Value("\${omdb-api.uri-base}") private val omdbApiUrl: String,
-        @Value("\${omdb-api.api-key}") private val omdbApiKey: String
+        @Value("\${movie-api.uri-base}") private val movieApiURL: String,
+        @Value("\${movie-api.api-key}") private val movieApiKey: String
 ) {
-    fun getMovieByTitle(title: String): MovieDto? {
 
-        val targetUrl = UriComponentsBuilder.fromUriString(omdbApiUrl)
-                .queryParam("apikey", omdbApiKey)
+    private val log by logger()
+
+    fun getMovieByTitle(title: String): MovieDto? = run {
+        UriComponentsBuilder.fromUriString(movieApiURL)
+                .queryParam("apikey", movieApiKey)
                 .queryParam("t", title)
                 .build()
                 .toUri()
-
-        logger.info("Getting movies with url={}", targetUrl)
-
-        return restTemplate.getForEntity(targetUrl, MovieDto::class.java).body
-    }
-
-    companion object {
-        private val logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass())
+    }.also {
+        log.info("Getting movies with url={}", it)
+    }.let {
+        try {
+            restTemplate.getForEntity(it, MovieDto::class.java).body
+        } catch (ex: RestClientException) {
+            log.error("Movie API response message = ${ex.message}")
+            throw ApiResponseException("Movie API response message = ${ex.message}", ErrorCode.API_IS_NOT_AVAILABLE)
+        }
     }
 }

@@ -1,14 +1,20 @@
 package pl.braintelligence.requirement.task.infrastructure.internal.config
 
+import com.google.common.base.Predicates
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.web.client.RestTemplateBuilder
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.client.RestTemplate
-import org.springframework.web.servlet.config.annotation.*
+import springfox.documentation.builders.PathSelectors
+import springfox.documentation.builders.RequestHandlerSelectors
+import springfox.documentation.spi.DocumentationType
+import springfox.documentation.spring.web.plugins.Docket
+import springfox.documentation.swagger2.annotations.EnableSwagger2
 
 @Configuration
+@EnableSwagger2
 @EnableConfigurationProperties
 class AppConfig {
 
@@ -19,31 +25,16 @@ class AppConfig {
     private val readTimeout: Int = 0
 
     @Bean
-    fun restTemplate(restTemplateBuilder: RestTemplateBuilder): RestTemplate {
-        return restTemplateBuilder
-                .setConnectTimeout(connectTimeout)
-                .setReadTimeout(readTimeout)
-                .build()
-    }
-}
+    fun restTemplate(restTemplateBuilder: RestTemplateBuilder): RestTemplate = restTemplateBuilder
+            .setConnectTimeout(connectTimeout)
+            .setReadTimeout(readTimeout)
+            .build()
 
-@Configuration
-@EnableWebMvc
-class WebMvcConfig : WebMvcConfigurer {
-
-    override fun addCorsMappings(registry: CorsRegistry) {
-        registry.addMapping("/**")
-    }
-
-    override fun addViewControllers(registry: ViewControllerRegistry) {
-        registry.addRedirectViewController("/api/v2/api-docs", "/v2/api-docs")
-        registry.addRedirectViewController("/api/swagger-resources/configuration/ui", "/swagger-resources/configuration/ui")
-        registry.addRedirectViewController("/api/swagger-resources/configuration/security", "/swagger-resources/configuration/security")
-        registry.addRedirectViewController("/api/swagger-resources", "/swagger-resources")
-    }
-
-    override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
-        registry.addResourceHandler("/api/swagger-ui.html**").addResourceLocations("classpath:/META-INF/resources/swagger-ui.html")
-        registry.addResourceHandler("/api/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/")
-    }
+    @Bean
+    fun apiDocket(): Docket =
+            Docket(DocumentationType.SWAGGER_2)
+                    .select()
+                    .apis(RequestHandlerSelectors.any())
+                    .paths(Predicates.not(PathSelectors.regex("/error.*")))
+                    .build()
 }

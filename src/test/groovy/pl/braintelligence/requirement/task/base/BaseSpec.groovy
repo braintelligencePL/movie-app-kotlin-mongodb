@@ -2,20 +2,23 @@ package pl.braintelligence.requirement.task.base
 
 import com.github.tomakehurst.wiremock.junit.WireMockRule
 import org.junit.Rule
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.test.context.ActiveProfiles
-import pl.braintelligence.requirement.task.Application
-import pl.braintelligence.requirement.task.infrastructure.internal.config.Profiles
 import spock.lang.Specification
 
-@SpringBootTest(
-        classes = [Application],
-        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles([Profiles.LOCAL])
-abstract class BaseIntegrationSpec extends Specification implements BaseHttpMethodsSpec {
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
+
+@SpringBootTest(webEnvironment = RANDOM_PORT)
+@ActiveProfiles("local")
+abstract class BaseSpec extends Specification implements BaseHttpMethods {
 
     @Rule
-    public WireMockRule wireMockRule = new WireMockRule(12346)
+    public WireMockRule reportingService = new WireMockRule(12345)
+
+    @Autowired
+    private TestRestTemplate restTemplate
 
     void setupSpec() {
         setupWiremock()

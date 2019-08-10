@@ -1,0 +1,7 @@
+{
+  "timestamp": 1565450693210,
+  "status": 500,
+  "error": "Internal Server Error",
+  "message": "401 Unauthorized",
+  "path": "/movies/fast/times"
+}
