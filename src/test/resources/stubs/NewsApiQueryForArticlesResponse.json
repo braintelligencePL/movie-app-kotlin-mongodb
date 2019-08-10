@@ -1,0 +1,19 @@
+{
+  "status": "ok",
+  "totalResults": 1,
+  "articles": [
+    {
+      "source": {
+        "id": null,
+        "name": "test"
+      },
+      "author": "Piotr Bicki",
+      "title": "Lepiej późno niż wcale...",
+      "description": "Bitcoin is here.",
+      "url": "https://www.test.html",
+      "urlToImage": "https://test.test",
+      "publishedAt": "2018-10-10T16:15:00Z",
+      "content": "Deweloperzy ze studia Rockstar umożliwili nieuleczalnie choremu graczowi zapoznanie się z wczesną wersją Red Dead Redemption 2 - kolejnej produkcji firmy osadzonej na Dzikim Zachodzie. Jurian z Holandii cierpi na nerwiakowłókniakowatość typu 2 - chorobę genet… [+1158 chars]"
+    }
+  ]
+}
