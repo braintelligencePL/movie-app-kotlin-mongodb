@@ -13,7 +13,6 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ActiveProfiles(Profiles.LOCAL)
-
 abstract class BaseSpec extends Specification implements BaseHttpMethods {
 
     @Rule
