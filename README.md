@@ -87,8 +87,6 @@ Localhost: http://localhost:8080/api/swagger-ui.html
 
 <br>
 
-todo(rating can be from 1 to 5)
-
 # Things done:
 
 ### Application
@@ -98,9 +96,10 @@ todo(rating can be from 1 to 5)
 
 ### Infrastructure
 - mongodb cluster is from cloud.mongodb.com (Replica set - 3 nodes)
-- CI - travis - there is problem with embedded mongo on travis, so app connects to cloud.mongodb.com - tests should be self-contained and I'm fan of in-memory for integration tests. Generally speaking depends on needs.)
+- CI - travis - there is problem with embedded mongo on travis. Travis and local integration tests are connected to cluster with DBS named test. Generally IT should be self-contained and im fan of in-memory tests, but that solution is good enought (good thing is we are testing against real database), but also we depend on some external service which is not good in the same time). Another solution might be docker-compose. 
 - deployed to Heroku - instance sleeps after 30min. Give a moment for instance to start. 
 - simple pipeline - Travis (runs tests) -> Heroku (waits for CI to pass before deploy)
+- Different MongoDB for each environment. test, prod (test is used as local).   
 
 # Things done (but not clear): 
 - I assumed that second point from Challenge `movie times` is meant for `movie time` meaning `Runtime` of one movie (not all Fast & Furious movies - seems pointless just to return all times of movies).
@@ -110,5 +109,5 @@ todo(rating can be from 1 to 5)
 - API versioning - because that's a first iteration
 - All endpoints are internal for public ones create an annotation @PublicEndpoint 
 - Standardize the format of returned movie-api ratings e.g. 5/10
-- Different Mongodb for each environment. This application has same DB for local/prod cloud.mongodb instance.  
 - Aggregating average internal rating offline. Right now it is performed when request is coming which is bad because when more reviews will come than response time will be longer.
+- Add paging for internalReviews (maybe introduce completely new endpoint for it, because extending already existing functionality to paging would make this one endpoint a bit too complex).

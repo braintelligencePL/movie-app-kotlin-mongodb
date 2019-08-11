@@ -1,7 +1,7 @@
 package pl.braintelligence.requirement.task.movie
 
-import pl.braintelligence.requirement.task.domain.movie.Movie
 import pl.braintelligence.requirement.task.base.BaseSpec
+import pl.braintelligence.requirement.task.domain.movie.Movie
 
 import static pl.braintelligence.requirement.task.movie.MovieClientStubs.stubMovieApiResponse
 
@@ -19,7 +19,7 @@ class MovieControllerTest extends BaseSpec {
             name == "The Fast and the Furious"
             movieTime == "106 min"
             releaseDate == "22 Jun 2001"
-            with(externalExternalRatings[0]) {
+            with(externalRatings[0]) {
                 source == "Internet Movie Database"
                 value == "6.8/10"
             }
