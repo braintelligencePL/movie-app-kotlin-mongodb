@@ -9,11 +9,17 @@
 export API_KEY="your_api_key"
 ```
 
-2. Optionally when running application from IntelliJ Idea:  
+2. Optionally when running application from IntelliJ Idea: <br>
+Go to: /run/edit_configurations/your_configuration/enviroment_variables  
 ```bash
-Go to: /run/edit_configurations/your_configuration/enviroment_variables
-
 API_KEY=your_api_key
+```
+
+3. Also you need credentials for your mongodb instance: 
+```
+export MONGO_HOST="your_host"
+export MONGO_USERNAME="your_username"
+export MONGO_PASSWORD="your_password"
 ```
 
 <br> 
@@ -21,7 +27,9 @@ API_KEY=your_api_key
 # Endpoints:
 To make easier for mobile developer there is only one endpoint that contains most of the information needed. Payload is not big so I guess that's good idea.
 
-`GET: /movies?title="Fast and the Furious"` 
+Online: https://movie-recruitment-task.herokuapp.com/movies?title=The%20Fast%20and%20the%20Furious
+
+Local: `GET: /movies?title="Fast and the Furious"` 
 ```json
 {
     "id": "tt0232500",
@@ -54,13 +62,10 @@ To make easier for mobile developer there is only one endpoint that contains mos
 <br>
 
 ## REST API documentation
-```bash
-// online - heroku instance
-https://movie-recruitment-task.herokuapp.com/api/swagger-ui.html
 
-// localhost
-http://localhost:8080/api/swagger-ui.html
-```
+Online: https://movie-recruitment-task.herokuapp.com/api/swagger-ui.html
+
+Localhost: http://localhost:8080/api/swagger-ui.html  
 
 ## Build docker image
 ```bash
@@ -68,13 +73,16 @@ http://localhost:8080/api/swagger-ui.html
 ```
 
 # Things done:
+
+## Application
 - merged movie-api response imdbRating and Ratings as one list of ratings
 - there is internalRating=(our customer rating and review) and externalRating=(returned from movie-api - only rating)
-- CI - travis (there is problem with embeded mongo on travis so app connects to cloud.mongodb.com)
-- deployed to Heroku - instance sleeps after 30min. Give a moment for instance to start. 
-- mongodb is sitting on cloud.mongodb.com.
-- simple pipeline Heroku waits for CI to pass before deploy new version.
 
+## Infrastructure
+- mongodb is from cloud.mongodb.com. 
+- CI - travis - there is problem with embedded mongo on travis, so app connects to cloud.mongodb.com - but that's not good because tests should be self-contained)
+- deployed to Heroku - instance sleeps after 30min. Give a moment for instance to start. 
+- simple pipeline Heroku waits for CI to pass before deploy new version.
 
 # Things done (but not clear): 
 - I assumed that second point from Challenge `movie times` is meant for `movie time` meaning `Runtime` of one movie (not all Fast & Furious movies - seems pointless just to return all times of movies).
@@ -84,4 +92,5 @@ http://localhost:8080/api/swagger-ui.html
 - API versioning - because that's a first iteration
 - All endpoints are internal for public ones create an annotation @PublicEndpoint 
 - Standardize the format of returned movie-api ratings e.g. 5/10
-- Different Mongodb instances. This application has same DB for local/prod cloud.mongodb instance.  
+- Different Mongodb for each environment. This application has same DB for local/prod cloud.mongodb instance.  
+- 
