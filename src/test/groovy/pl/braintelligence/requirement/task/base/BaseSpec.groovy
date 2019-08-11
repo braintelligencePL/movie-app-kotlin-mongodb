@@ -21,8 +21,8 @@ abstract class BaseSpec extends Specification implements BaseHttpMethods {
     @Autowired
     private TestRestTemplate restTemplate
 
-    @Autowired
-    private MongoTemplate mongoTemplate
+//    @Autowired
+//    private MongoTemplate mongoTemplate
 
     void setupSpec() {
         setupWiremock()
