@@ -36,5 +36,6 @@ open class AppConfig {
                     .select()
                     .apis(RequestHandlerSelectors.any())
                     .paths(Predicates.not(PathSelectors.regex("/error.*")))
+                    .paths(Predicates.not(PathSelectors.regex("/actuator.*")))
                     .build()
 }

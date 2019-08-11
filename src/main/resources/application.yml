@@ -5,3 +5,8 @@ application:
 movie-api:
   uri-base: http://www.omdbapi.com/
   api-key: ${API_KEY}
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}/test?retryWrites=true&w=majority
