@@ -10,13 +10,13 @@ export API_KEY="your_api_key"
 ```
 
 2. Optionally when running application from IntelliJ Idea: <br>
-Go to: /run/edit_configurations/your_configuration/enviroment_variables  
+Go to: `/run/edit_configurations/your_configuration/enviroment_variables`  
 ```bash
 API_KEY=your_api_key
 ```
 
 3. Also you need credentials for your mongodb instance: 
-```
+```bash
 export MONGO_HOST="your_host"
 export MONGO_USERNAME="your_username"
 export MONGO_PASSWORD="your_password"
