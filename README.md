@@ -3,7 +3,7 @@
 #### [![Build Status](https://travis-ci.org/braintelligencePL/movie-recruitment-task.svg?branch=master)](https://travis-ci.org/braintelligencePL/movie-recruitment-task) 
 
 # Prerequisites
-1. You need an API key. Provide it as an environment variable.
+1. You need an API key. Provide it as an environment variable. http://www.omdbapi.com/apikey.aspx
 
 ```bash
 export API_KEY="your_api_key"
@@ -29,7 +29,7 @@ To make easier for mobile developer there is only one endpoint that contains mos
 
 Online: https://movie-recruitment-task.herokuapp.com/movies?title=The%20Fast%20and%20the%20Furious
 
-Local: `GET: /movies?title="Fast and the Furious"` 
+Endpoint: `GET: /movies?title="Fast and the Furious"` 
 ```json
 {
     "id": "tt0232500",
@@ -67,20 +67,27 @@ Online: https://movie-recruitment-task.herokuapp.com/api/swagger-ui.html
 
 Localhost: http://localhost:8080/api/swagger-ui.html  
 
+<br>
+
 ## Build docker image
 ```bash
 ./gradlew jibDockerBuild
 ```
 
+<br>
+
 # Things done:
 
-## Application
+### Application
 - merged movie-api response imdbRating and Ratings as one list of ratings
 - there is internalRating=(our customer rating and review) and externalRating=(returned from movie-api - only rating)
+- two DBS on cluster: prod and test (prod for Heroku, test for integration tests)
 
-## Infrastructure
-- mongodb is from cloud.mongodb.com. 
-- CI - travis - there is problem with embedded mongo on travis, so app connects to cloud.mongodb.com - but that's not good because tests should be self-contained)
+![](https://github.com/braintelligencePL/playgrounds/blob/master/images/Screenshot%202019-08-11%20at%2011.40.11.png)
+
+### Infrastructure
+- mongodb is from cloud.mongodb.com
+- CI - travis - there is problem with embedded mongo on travis, so app connects to cloud.mongodb.com - tests should be self-contained and I'm fan of in-memory for integration tests, but that solution is good too. I guess.)
 - deployed to Heroku - instance sleeps after 30min. Give a moment for instance to start. 
 - simple pipeline Heroku waits for CI to pass before deploy new version.
 

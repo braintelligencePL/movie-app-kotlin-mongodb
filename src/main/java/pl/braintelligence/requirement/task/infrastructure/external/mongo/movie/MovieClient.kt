@@ -1,4 +1,4 @@
-package pl.braintelligence.requirement.task.infrastructure.external.movie
+package pl.braintelligence.requirement.task.infrastructure.external.mongo.movie
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.context.properties.EnableConfigurationProperties
@@ -8,7 +8,7 @@ import org.springframework.web.client.RestTemplate
 import org.springframework.web.util.UriComponentsBuilder
 import pl.braintelligence.requirement.task.infrastructure.external.error.ApiResponseException
 import pl.braintelligence.requirement.task.infrastructure.external.error.ErrorCode
-import pl.braintelligence.requirement.task.infrastructure.external.movie.dto.MovieApiResponse
+import pl.braintelligence.requirement.task.infrastructure.external.mongo.movie.dto.MovieApiResponse
 import pl.braintelligence.requirement.task.logger
 import java.net.URI
 

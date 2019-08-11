@@ -1,0 +1,5 @@
+package pl.braintelligence.requirement.task.infrastructure.external.mongo
+
+object Collections {
+    const val REVIEWS_COLLECTION = "reviews"
+}

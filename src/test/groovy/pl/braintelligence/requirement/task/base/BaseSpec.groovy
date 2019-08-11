@@ -28,6 +28,16 @@ abstract class BaseSpec extends Specification implements BaseHttpMethods {
         setupWiremock()
     }
 
+    void setup() {
+        clearMongoDB()
+    }
+
+    private void clearMongoDB() {
+        for (def collection : mongoTemplate.collectionNames) {
+            mongoTemplate.dropCollection(collection)
+        }
+    }
+
     private static void setupWiremock() {
         System.setProperty('http.keepAlive', 'false')
         System.setProperty('http.maxConnections', '1')

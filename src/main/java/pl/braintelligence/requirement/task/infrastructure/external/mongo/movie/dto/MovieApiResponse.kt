@@ -1,4 +1,4 @@
-package pl.braintelligence.requirement.task.infrastructure.external.movie.dto
+package pl.braintelligence.requirement.task.infrastructure.external.mongo.movie.dto
 
 import com.fasterxml.jackson.annotation.JsonProperty
 

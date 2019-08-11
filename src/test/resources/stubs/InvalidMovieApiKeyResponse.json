@@ -3,5 +3,5 @@
   "status": 500,
   "error": "Internal Server Error",
   "message": "401 Unauthorized",
-  "path": "/movies/fast/times"
+  "path": "/movies"
 }

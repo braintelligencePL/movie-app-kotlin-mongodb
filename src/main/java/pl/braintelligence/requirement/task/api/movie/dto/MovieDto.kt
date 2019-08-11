@@ -1,7 +1,8 @@
 package pl.braintelligence.requirement.task.api.movie.dto
 
-import pl.braintelligence.requirement.task.infrastructure.external.movie.dto.MovieApiResponse
-import pl.braintelligence.requirement.task.infrastructure.external.movie.dto.Rating
+import pl.braintelligence.requirement.task.infrastructure.external.mongo.movie.dto.MovieApiResponse
+import pl.braintelligence.requirement.task.infrastructure.external.mongo.movie.dto.Rating
+import pl.braintelligence.requirement.task.infrastructure.external.mongo.review.entities.DbMovieReview
 
 data class MovieDto(
         val id: String,
@@ -10,7 +11,7 @@ data class MovieDto(
         val description: String,
         val releaseDate: String,
         val externalRatings: MutableList<RatingDto>,
-        val internalReviews: List<InternalReviews>
+        var internalReviews: MutableList<InternalReview>
 ) {
     companion object {
         fun toMovieDto(movieApiResponse: MovieApiResponse): MovieDto = movieApiResponse.run {
@@ -21,7 +22,7 @@ data class MovieDto(
                     description = plot,
                     releaseDate = released,
                     externalRatings = mergeRatings(ratings, imdbRating),
-                    internalReviews = emptyList()
+                    internalReviews = arrayListOf()
             )
         }
 
@@ -54,7 +55,17 @@ data class RatingDto(
         val value: String
 )
 
-data class InternalReviews(
+data class InternalReview(
         val rating: String,
         val review: String
-)
+) {
+    companion object {
+        fun toInternalReview(dbMovieReview: DbMovieReview?): MutableList<InternalReview>? =
+                dbMovieReview?.reviews?.map {
+                    InternalReview(
+                            it.rating.toString(),
+                            it.review
+                    )
+                }?.toMutableList()
+    }
+}
