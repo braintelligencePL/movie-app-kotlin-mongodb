@@ -70,10 +70,11 @@ http://localhost:8080/api/swagger-ui.html
 # Things done:
 - merged movie-api response imdbRating and Ratings as one list of ratings
 - there is internalRating=(our customer rating and review) and externalRating=(returned from movie-api - only rating)
-- CI - travis.
+- CI - travis (there is problem with embeded mongo on travis so app connects to cloud.mongodb.com)
 - deployed to Heroku - instance sleeps after 30min. Give a moment for instance to start. 
 - mongodb is sitting on cloud.mongodb.com.
 - simple pipeline Heroku waits for CI to pass before deploy new version.
+
 
 # Things done (but not clear): 
 - I assumed that second point from Challenge `movie times` is meant for `movie time` meaning `Runtime` of one movie (not all Fast & Furious movies - seems pointless just to return all times of movies).
