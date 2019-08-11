@@ -76,16 +76,18 @@ Localhost: http://localhost:8080/api/swagger-ui.html
 
 <br>
 
+todo(rating can be from 1 to 5)
+
 # Things done:
 
 ### Application
 - merged movie-api response imdbRating and Ratings as one list of ratings
 - there is internalRating=(our customer rating and review) and externalRating=(returned from movie-api - only rating)
-- two DBS on cluster: prod and test (prod for Heroku, test for integration tests)
+- two DBS on cluster: prod and test (prod for Heroku, test for local development and tests)
 
 ### Infrastructure
-- mongodb is from cloud.mongodb.com
-- CI - travis - there is problem with embedded mongo on travis, so app connects to cloud.mongodb.com - tests should be self-contained and I'm fan of in-memory for integration tests, but that solution is good too. Depends on needs. )
+- mongodb cluster is from cloud.mongodb.com (Replica set - 3 nodes)
+- CI - travis - there is problem with embedded mongo on travis, so app connects to cloud.mongodb.com - tests should be self-contained and I'm fan of in-memory for integration tests. Generally speaking depends on needs.)
 - deployed to Heroku - instance sleeps after 30min. Give a moment for instance to start. 
 - simple pipeline Heroku waits for CI to pass before deploy new version.
 
@@ -98,4 +100,4 @@ Localhost: http://localhost:8080/api/swagger-ui.html
 - All endpoints are internal for public ones create an annotation @PublicEndpoint 
 - Standardize the format of returned movie-api ratings e.g. 5/10
 - Different Mongodb for each environment. This application has same DB for local/prod cloud.mongodb instance.  
-- 
+- Aggregating average internal rating offline. Right now it is performed when request is coming which is bad because when more reviews will come than response time will be longer.
