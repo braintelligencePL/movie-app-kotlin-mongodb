@@ -1,5 +1,6 @@
 package pl.braintelligence.requirement.task.review
 
+
 import pl.braintelligence.requirement.task.api.movie.dto.MovieDto
 import pl.braintelligence.requirement.task.api.review.dto.NewReviewDto
 import pl.braintelligence.requirement.task.base.BaseSpec
@@ -27,7 +28,7 @@ class MovieControllerTest extends BaseSpec {
         with(response.body) {
             internalReviews.size() == 1
             with(internalReviews[0]) {
-                rating == sampleRating
+                rating == sampleRating.toString()
                 review == sampleReview
             }
         }
