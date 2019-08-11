@@ -1,7 +1,7 @@
 package pl.braintelligence.requirement.task.review
 
 
-import pl.braintelligence.requirement.task.api.movie.dto.MovieDto
+import pl.braintelligence.requirement.task.domain.movie.Movie
 import pl.braintelligence.requirement.task.api.review.dto.NewReviewDto
 import pl.braintelligence.requirement.task.base.BaseSpec
 
@@ -22,7 +22,7 @@ class MovieControllerTest extends BaseSpec {
         post("/reviews", newReview)
 
         when: "get movie by title"
-        def response = get("/movies?title=fast", MovieDto)
+        def response = get("/movies?title=fast", Movie)
 
         then:
         with(response.body) {

@@ -1,8 +1,7 @@
 package pl.braintelligence.requirement.task.domain.movie
 
 import org.springframework.stereotype.Service
-import pl.braintelligence.requirement.task.api.movie.dto.InternalReview
-import pl.braintelligence.requirement.task.api.movie.dto.MovieDto
+import pl.braintelligence.requirement.task.domain.movie.values.InternalReview
 import pl.braintelligence.requirement.task.domain.review.ReviewRepository
 import pl.braintelligence.requirement.task.infrastructure.external.mongo.movie.MovieClient
 
@@ -12,9 +11,9 @@ class MovieService(
         private val reviewRepository: ReviewRepository
 ) {
 
-    fun fetchMovieByTitle(title: String): MovieDto? {
+    fun fetchMovieByTitle(title: String): Movie? {
         val movieApiResponse = fetchMovieFromApi(title)
-        val movieDto = movieApiResponse?.let { MovieDto.toMovieDto(it) }
+        val movieDto = movieApiResponse?.let { Movie.toMovie(it) }
 
         val movieId = movieDto?.id
         val dbReview = movieId?.let { reviewRepository.findByMovieId(it) }
@@ -22,10 +21,6 @@ class MovieService(
         movieDto?.internalReviews = InternalReview.toInternalReview(dbReview) ?: arrayListOf()
 
         return movieDto
-    }
-
-    private fun queryForInternalRating(movieId: String?): InternalReview {
-        TODO("not implemented")
     }
 
     private fun fetchMovieFromApi(title: String) = movieClient.getMovieByTitle(title)

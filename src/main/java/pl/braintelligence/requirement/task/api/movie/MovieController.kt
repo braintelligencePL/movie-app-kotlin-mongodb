@@ -2,7 +2,7 @@ package pl.braintelligence.requirement.task.api.movie
 
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
-import pl.braintelligence.requirement.task.api.movie.dto.MovieDto
+import pl.braintelligence.requirement.task.domain.movie.Movie
 import pl.braintelligence.requirement.task.domain.movie.MovieService
 
 @RestController
@@ -15,6 +15,6 @@ internal class MovieController(
     @ResponseStatus(HttpStatus.OK)
     override fun fetchMovieByTitle(
             @RequestParam(required = true) title: String
-    ): MovieDto? = movieService.fetchMovieByTitle(title)
+    ): Movie? = movieService.fetchMovieByTitle(title)
 
 }

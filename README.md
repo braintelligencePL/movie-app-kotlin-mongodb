@@ -55,7 +55,18 @@ Endpoint: `GET: /movies?title="Fast and the Furious"`
             "value": "6.8"
         }
     ],
-    "internalReviews": [] 
+    "internalReviews": [
+        {
+            "rating": "3",
+            "review": "good film",
+            "date": "2019-08-11T12:19:31.379Z"
+        },
+        {
+            "rating": "4",
+            "review": "bad movie",
+            "date": "2019-08-11T12:19:31.380Z"
+        }
+    ]
 }
 ```
 
@@ -89,7 +100,7 @@ todo(rating can be from 1 to 5)
 - mongodb cluster is from cloud.mongodb.com (Replica set - 3 nodes)
 - CI - travis - there is problem with embedded mongo on travis, so app connects to cloud.mongodb.com - tests should be self-contained and I'm fan of in-memory for integration tests. Generally speaking depends on needs.)
 - deployed to Heroku - instance sleeps after 30min. Give a moment for instance to start. 
-- simple pipeline Heroku waits for CI to pass before deploy new version.
+- simple pipeline - Travis (runs tests) -> Heroku (waits for CI to pass before deploy)
 
 # Things done (but not clear): 
 - I assumed that second point from Challenge `movie times` is meant for `movie time` meaning `Runtime` of one movie (not all Fast & Furious movies - seems pointless just to return all times of movies).
