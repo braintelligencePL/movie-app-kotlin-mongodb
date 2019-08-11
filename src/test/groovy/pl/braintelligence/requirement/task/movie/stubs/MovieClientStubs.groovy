@@ -1,4 +1,4 @@
-package pl.braintelligence.requirement.task.movie
+package pl.braintelligence.requirement.task.movie.stubs
 
 import com.github.tomakehurst.wiremock.stubbing.StubMapping
 import com.google.common.base.Charsets

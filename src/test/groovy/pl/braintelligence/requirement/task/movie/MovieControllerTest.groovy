@@ -3,7 +3,7 @@ package pl.braintelligence.requirement.task.movie
 import pl.braintelligence.requirement.task.base.BaseSpec
 import pl.braintelligence.requirement.task.domain.movie.Movie
 
-import static pl.braintelligence.requirement.task.movie.MovieClientStubs.stubMovieApiResponse
+import static pl.braintelligence.requirement.task.movie.stubs.MovieClientStubs.stubMovieApiResponse
 
 class MovieControllerTest extends BaseSpec {
 

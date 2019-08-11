@@ -4,7 +4,7 @@ package pl.braintelligence.requirement.task.movie
 import pl.braintelligence.requirement.task.base.BaseSpec
 
 import static org.springframework.http.HttpStatus.UNAUTHORIZED
-import static pl.braintelligence.requirement.task.movie.MovieClientStubs.stubInvalidApiKey
+import static pl.braintelligence.requirement.task.movie.stubs.MovieClientStubs.stubInvalidApiKey
 
 class MovieClientTest extends BaseSpec {
 

@@ -5,7 +5,7 @@ import pl.braintelligence.requirement.task.domain.movie.Movie
 import pl.braintelligence.requirement.task.api.review.dto.NewReviewDto
 import pl.braintelligence.requirement.task.base.BaseSpec
 
-import static pl.braintelligence.requirement.task.movie.MovieClientStubs.stubMovieApiResponse
+import static pl.braintelligence.requirement.task.movie.stubs.MovieClientStubs.stubMovieApiResponse
 
 class MovieControllerTest extends BaseSpec {
 

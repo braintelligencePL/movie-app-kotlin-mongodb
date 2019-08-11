@@ -4,10 +4,11 @@ import org.springframework.data.mongodb.core.MongoTemplate
 import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.stereotype.Component
 import org.springframework.stereotype.Repository
-import pl.braintelligence.requirement.task.api.review.dto.NewReviewDto
+import pl.braintelligence.requirement.task.domain.review.MovieReview
 import pl.braintelligence.requirement.task.domain.review.ReviewRepository
 import pl.braintelligence.requirement.task.infrastructure.external.mongo.review.entities.DbInternalMovieReviews
 import pl.braintelligence.requirement.task.infrastructure.external.mongo.review.entities.DbMovieReview
+import pl.braintelligence.requirement.task.logger
 
 
 @Repository
@@ -22,17 +23,23 @@ class MongoReviewRepository(
         private val mongoTemplate: MongoTemplate
 ) : ReviewRepository {
 
-    override fun save(newReviewDto: NewReviewDto) {
-        val dbInternalMovieReviews: DbInternalMovieReviews? = mongo.findByMovieId(newReviewDto.movieId)
-                ?: DbInternalMovieReviews(movieId = newReviewDto.movieId)
+    val log by logger()
 
-        val newReview = newReviewDto.run { DbMovieReview(rating, review) }
+    override fun save(movieReview: MovieReview) {
+        val dbInternalMovieReviews: DbInternalMovieReviews? = fetchInternalReviewByMovieId(movieReview)
+
+        val newReview = movieReview.run { DbMovieReview(rating, review) }
 
         dbInternalMovieReviews?.reviews?.run { add(newReview) }
 
         mongo.save(dbInternalMovieReviews)
     }
 
-    override fun findByMovieId(id: String): DbInternalMovieReviews? = mongo.findByMovieId(id)
+    private fun fetchInternalReviewByMovieId(movieReview: MovieReview) =
+            (mongo.findByMovieId(movieReview.movieId)
+                    ?: DbInternalMovieReviews(movieId = movieReview.movieId))
+
+    override fun findByMovieId(id: String): DbInternalMovieReviews? =
+            mongo.findByMovieId(id)
 
 }

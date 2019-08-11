@@ -8,7 +8,9 @@ class ReviewService(
         private val reviewRepository: ReviewRepository
 ) {
     fun addRatingAndReviewForMovie(newReviewDto: NewReviewDto) {
-        reviewRepository.save(newReviewDto)
+        val review = NewReviewDto.toReview(newReviewDto)
+        reviewRepository.save(review)
+
     }
 
 }
