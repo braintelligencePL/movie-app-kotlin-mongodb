@@ -1,9 +1,9 @@
 package pl.braintelligence.requirement.task.api.movie
 
 import io.swagger.annotations.ApiOperation
-import pl.braintelligence.requirement.task.api.catalog.dto.CatalogDto
 import pl.braintelligence.requirement.task.api.catalog.dto.CatalogToUpdate
 import pl.braintelligence.requirement.task.api.catalog.dto.NewCatalog
+import pl.braintelligence.requirement.task.infrastructure.external.mongo.catalog.entities.DbCatalog
 
 interface ApiCatalogController {
 
@@ -11,7 +11,7 @@ interface ApiCatalogController {
     fun createCatalog(newCatalog: NewCatalog)
 
     @ApiOperation(value = "Get all catalogs")
-    fun getAllCatalogs(): CatalogDto
+    fun getAllCatalogs(): List<DbCatalog>
 
     @ApiOperation(value = "Update catalog")
     fun updateCatalog(catalogToUpdate: CatalogToUpdate)

@@ -1,6 +1,16 @@
 # Movie application
 
-#### [![Build Status](https://travis-ci.org/braintelligencePL/movie-recruitment-task.svg?branch=master)](https://travis-ci.org/braintelligencePL/movie-recruitment-task) 
+#### [![Build Status](https://travis-ci.org/braintelligencePL/movie-recruitment-task.svg?branch=master)](https://travis-ci.org/braintelligencePL/movie-recruitment-task)
+
+## Bussiness case:  
+
+User can search for movies that are in the cinema. 
+
+User can search for any movie that is out there by title and get detailed response about the movie. 
+ 
+Admin can use that to search for movies that could be in the cinema and use its imdbId to add movie to the cinema repertoire.  
+
+Admin can also change showTime and price of the movie. 
 
 # Prerequisites
 1. You need an API key. Provide it as an environment variable. http://www.omdbapi.com/apikey.aspx
@@ -23,6 +33,12 @@ export MONGO_PASSWORD="your_password"
 ```
 
 <br> 
+
+## REST API documentation
+
+Online: https://movie-recruitment-task.herokuapp.com/api/swagger-ui.html
+
+Localhost: http://localhost:8080/api/swagger-ui.html  
 
 # Endpoints:
 To make easier for mobile developer there is only one endpoint that contains most of the information needed. Payload is not big so I guess that's good idea.
@@ -70,13 +86,38 @@ Endpoint: `GET: /movies?title="Fast and the Furious"`
 }
 ```
 
-<br>
+Endpoint: `POST: /catalogs` - create new catalog
+```json
+{
+    "name": "catalog name"
+}
+```
 
-## REST API documentation
+Endpoint `PUT: /catalogs` - update or add movies to cinema repertoire 
+```json
+{
+    "catalogName": "123",
+    "movies": [
+        {
+            "imdbId": "tt0232500",
+            "showTime": {
+                "time": [
+                    11,
+                    54
+                ],
+                "date": [
+                    2019,
+                    11,
+                    25
+                ]
+            },
+            "price": "123"
+        }
+    ]
+}
+```
 
-Online: https://movie-recruitment-task.herokuapp.com/api/swagger-ui.html
-
-Localhost: http://localhost:8080/api/swagger-ui.html  
+Endpoint: `GET: /catalogs` - get all catalogs
 
 <br>
 
@@ -96,14 +137,13 @@ Localhost: http://localhost:8080/api/swagger-ui.html
 
 ### Infrastructure
 - mongodb cluster is from cloud.mongodb.com (Replica set - 3 nodes)
-- CI - travis - there is problem with embedded mongo on travis. Travis and local integration tests are connected to cluster with DBS named test. Generally IT should be self-contained and im fan of in-memory tests, but that solution is good enought (good thing is we are testing against real database), but also we depend on some external service which is not good in the same time). Another solution might be docker-compose. 
+- CI - travis - there is problem with embedded mongo on travis. Travis and local integration tests are connected to cluster with DBS named test. Generally IT should be self-contained and im fan of in-memory tests, but that solution is good too (good thing is we are testing against real database), but also we depend on some external service which is not good in the same time). Another solution might be docker-compose. 
 - deployed to Heroku - instance sleeps after 30min. Give a moment for instance to start. 
 - simple pipeline - Travis (runs tests) -> Heroku (waits for CI to pass before deploy)
 - Different MongoDB for each environment. test, prod (test is used as local).   
 
 # Things done (but not clear): 
-- I assumed that second point from Challenge `movie times` is meant for `movie time` meaning `Runtime` of one movie (not all Fast & Furious movies - seems pointless just to return all times of movies).
-- As Third point is similar to Second one I merged that endpoint into one. Search movie by title. 
+- I assumed that second point from Challenge `movie times` is meant for `movie time` meaning `Runtime` of one movie (not all Fast & Furious movies - seems pointless just to return all times of movies). So I merged second and third point into one. 
 
 # Things that might be done: 
 - API versioning - because that's a first iteration
@@ -111,3 +151,4 @@ Localhost: http://localhost:8080/api/swagger-ui.html
 - Standardize the format of returned movie-api ratings e.g. 5/10
 - Aggregating average internal rating offline. Right now it is performed when request is coming which is bad because when more reviews will come than response time will be longer.
 - Add paging for internalReviews (maybe introduce completely new endpoint for it, because extending already existing functionality to paging would make this one endpoint a bit too complex).
+- As you can create multiple catalogs application can be sold to other client with other repertoire.

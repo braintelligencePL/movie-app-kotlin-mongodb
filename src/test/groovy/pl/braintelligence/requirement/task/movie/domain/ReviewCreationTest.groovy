@@ -1,10 +1,10 @@
 package pl.braintelligence.requirement.task.movie.domain
 
+import pl.braintelligence.requirement.task.base.BaseTest
 import pl.braintelligence.requirement.task.domain.core.review.MovieReview
 import pl.braintelligence.requirement.task.domain.exceptions.InvalidRatingException
-import spock.lang.Specification
 
-class ReviewCreationTest extends Specification {
+class ReviewCreationTest extends BaseTest {
 
     def "Should not create review when rating is not between 1..5"() {
         when:

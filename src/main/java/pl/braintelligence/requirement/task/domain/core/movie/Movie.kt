@@ -7,7 +7,7 @@ import pl.braintelligence.requirement.task.infrastructure.external.client.dto.Mo
 import pl.braintelligence.requirement.task.infrastructure.external.client.dto.Rating
 
 data class Movie(
-        val id: String,
+        val imDbId: String,
         val name: String,
         val movieTime: String,
         val description: String,
@@ -18,7 +18,7 @@ data class Movie(
     companion object {
         fun toMovie(movieApiResponse: MovieApiResponse): Movie = movieApiResponse.run {
             Movie(
-                    id = imdbID,
+                    imDbId = imdbID,
                     name = title,
                     movieTime = runtime,
                     description = plot,

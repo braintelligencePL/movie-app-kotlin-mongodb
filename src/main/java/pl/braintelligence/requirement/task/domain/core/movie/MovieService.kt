@@ -15,7 +15,7 @@ class MovieService(
         val movieApiResponse = fetchMovieFromApi(title)
         val movieDto = movieApiResponse?.let { Movie.toMovie(it) }
 
-        val movieId = movieDto?.id
+        val movieId = movieDto?.imDbId
         val dbReview = movieId?.let { reviewRepository.findByMovieId(it) }
 
         movieDto?.internalReviews = InternalReview.toInternalReview(dbReview) ?: arrayListOf()

@@ -44,4 +44,17 @@ open class MovieClient(
             throw ApiResponseException("Movie API response message = ${ex.message}", ErrorCode.API_IS_NOT_AVAILABLE)
         }
     }
+
+    fun getTitleByImdbId(id: String) =
+            run {
+                UriComponentsBuilder.fromUriString(movieApiURL)
+                        .queryParam("apikey", movieApiKey)
+                        .queryParam("i", id)
+                        .build().toUri()
+            }.let {
+                log.info("Getting movies with url=$it")
+                fetchMovieData(it)
+            }.also {
+                log.info("Response from Movie API = $it")
+            }
 }

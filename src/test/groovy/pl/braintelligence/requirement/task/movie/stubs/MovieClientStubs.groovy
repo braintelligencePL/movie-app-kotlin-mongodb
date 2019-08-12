@@ -11,9 +11,18 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*
 class MovieClientStubs {
 
     private static final String VALID_URL_MOVIES = "/?apikey=test&t=fast"
+    private static final String VALID_URL_MOVIES_BY_ID = "/?apikey=test&i=imdbId"
 
     static StubMapping stubMovieApiResponse() {
         return stubFor(get(urlEqualTo(VALID_URL_MOVIES))
+                .willReturn(aResponse()
+                        .withStatus(HttpStatus.OK.value())
+                        .withHeader(HttpHeaders.CONTENT_TYPE, "application/json")
+                        .withBody(getFileContent("stubs/ValidMovieApiResponse.json"))))
+    }
+
+    static StubMapping stubMovieApiResponseSearchById() {
+        return stubFor(get(urlEqualTo(VALID_URL_MOVIES_BY_ID))
                 .willReturn(aResponse()
                         .withStatus(HttpStatus.OK.value())
                         .withHeader(HttpHeaders.CONTENT_TYPE, "application/json")

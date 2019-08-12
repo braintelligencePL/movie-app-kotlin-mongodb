@@ -1,11 +1,12 @@
 package pl.braintelligence.requirement.task.movie
 
-import pl.braintelligence.requirement.task.base.BaseSpec
+import pl.braintelligence.requirement.task.base.BaseTest
+
 import pl.braintelligence.requirement.task.domain.core.movie.Movie
 
 import static pl.braintelligence.requirement.task.movie.stubs.MovieClientStubs.stubMovieApiResponse
 
-class MovieControllerTest extends BaseSpec {
+class MovieControllerTest extends BaseTest {
 
     def "Should retrieve details of movie"() {
         given: "prepare stub from movie-api"
