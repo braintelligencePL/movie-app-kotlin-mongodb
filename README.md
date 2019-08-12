@@ -8,7 +8,7 @@ User can search for movies that are in the cinema.
 
 User can search for any movie that is out there by title and get detailed response about the movie. 
  
-Admin can use that to search for movies that could be in the cinema and use its imdbId to add movie to the cinema repertoire.  
+Admin can use that to search for movies that could be in the cinema and add movie to the cinema repertoire (by imdbId).  
 
 Admin can also change showTime and price of the movie. 
 
@@ -146,6 +146,7 @@ Endpoint: `GET: /catalogs` - get all catalogs
 - I assumed that second point from Challenge `movie times` is meant for `movie time` meaning `Runtime` of one movie (not all Fast & Furious movies - seems pointless just to return all times of movies). So I merged second and third point into one. 
 
 # Things that might be done: 
+- Commits should be done through PR
 - API versioning - because that's a first iteration
 - All endpoints are internal for public ones create an annotation @PublicEndpoint 
 - Standardize the format of returned movie-api ratings e.g. 5/10

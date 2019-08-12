@@ -7,7 +7,7 @@ import pl.braintelligence.requirement.task.infrastructure.external.mongo.catalog
 
 interface ApiCatalogController {
 
-    @ApiOperation(value = "Create new catalog of movies")
+    @ApiOperation(value = "Create new empty catalog")
     fun createCatalog(newCatalog: NewCatalog)
 
     @ApiOperation(value = "Get all catalogs")
