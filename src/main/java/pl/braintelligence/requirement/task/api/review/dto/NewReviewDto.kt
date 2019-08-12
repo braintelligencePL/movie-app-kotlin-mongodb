@@ -1,6 +1,6 @@
 package pl.braintelligence.requirement.task.api.review.dto
 
-import pl.braintelligence.requirement.task.domain.review.MovieReview
+import pl.braintelligence.requirement.task.domain.core.review.MovieReview
 import pl.braintelligence.requirement.task.infrastructure.external.mongo.review.entities.DbInternalMovieReviews
 import pl.braintelligence.requirement.task.infrastructure.external.mongo.review.entities.DbMovieReview
 

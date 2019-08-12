@@ -4,8 +4,8 @@ import org.springframework.data.mongodb.core.MongoTemplate
 import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.stereotype.Component
 import org.springframework.stereotype.Repository
-import pl.braintelligence.requirement.task.domain.review.MovieReview
-import pl.braintelligence.requirement.task.domain.review.ReviewRepository
+import pl.braintelligence.requirement.task.domain.core.review.MovieReview
+import pl.braintelligence.requirement.task.domain.core.review.ReviewRepository
 import pl.braintelligence.requirement.task.infrastructure.external.mongo.review.entities.DbInternalMovieReviews
 import pl.braintelligence.requirement.task.infrastructure.external.mongo.review.entities.DbMovieReview
 import pl.braintelligence.requirement.task.logger

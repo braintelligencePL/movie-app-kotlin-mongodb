@@ -1,9 +1,8 @@
 package pl.braintelligence.requirement.task.review
 
-
-import pl.braintelligence.requirement.task.domain.movie.Movie
 import pl.braintelligence.requirement.task.api.review.dto.NewReviewDto
 import pl.braintelligence.requirement.task.base.BaseSpec
+import pl.braintelligence.requirement.task.domain.core.movie.Movie
 
 import static pl.braintelligence.requirement.task.movie.stubs.MovieClientStubs.stubMovieApiResponse
 

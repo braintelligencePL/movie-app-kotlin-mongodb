@@ -2,8 +2,8 @@ package pl.braintelligence.requirement.task.api.movie
 
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
-import pl.braintelligence.requirement.task.domain.movie.Movie
-import pl.braintelligence.requirement.task.domain.movie.MovieService
+import pl.braintelligence.requirement.task.domain.core.movie.Movie
+import pl.braintelligence.requirement.task.domain.core.movie.MovieService
 
 @RestController
 @RequestMapping("/movies")

@@ -1,9 +1,9 @@
-package pl.braintelligence.requirement.task.domain.movie
+package pl.braintelligence.requirement.task.domain.core.movie
 
 import org.springframework.stereotype.Service
-import pl.braintelligence.requirement.task.domain.movie.values.InternalReview
-import pl.braintelligence.requirement.task.domain.review.ReviewRepository
-import pl.braintelligence.requirement.task.infrastructure.external.mongo.movie.MovieClient
+import pl.braintelligence.requirement.task.domain.core.movie.values.InternalReview
+import pl.braintelligence.requirement.task.domain.core.review.ReviewRepository
+import pl.braintelligence.requirement.task.infrastructure.external.client.MovieClient
 
 @Service
 class MovieService(

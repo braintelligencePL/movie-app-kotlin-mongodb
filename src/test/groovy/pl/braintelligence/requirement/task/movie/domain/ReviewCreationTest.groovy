@@ -1,7 +1,7 @@
 package pl.braintelligence.requirement.task.movie.domain
 
+import pl.braintelligence.requirement.task.domain.core.review.MovieReview
 import pl.braintelligence.requirement.task.domain.exceptions.InvalidRatingException
-import pl.braintelligence.requirement.task.domain.review.MovieReview
 import spock.lang.Specification
 
 class ReviewCreationTest extends Specification {

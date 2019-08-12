@@ -1,4 +1,4 @@
-package pl.braintelligence.requirement.task.domain.review
+package pl.braintelligence.requirement.task.domain.core.review
 
 import org.springframework.stereotype.Service
 import pl.braintelligence.requirement.task.api.review.dto.NewReviewDto
