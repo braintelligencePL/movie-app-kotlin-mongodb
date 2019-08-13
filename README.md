@@ -4,13 +4,13 @@
 
 ## Business case:  
 
-User can search for movies that are in the cinema. 
+User can get listof movies that are in the cinema. 
 
 User can search for any movie that is out there by title and get detailed response about the movie. 
  
 Admin can use that to search for movies that could be in the cinema and add movie to the cinema repertoire (by imdbId).  
 
-Admin can also change showTime and price of the movie. 
+Admin can also change showTime and price of the movie.
 
 # Prerequisites - environment variables
 1. You need an API key. Provide it as an environment variable. http://www.omdbapi.com/apikey.aspx
