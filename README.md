@@ -41,7 +41,7 @@ Application is available online: <br>
 
 ## REST API documentation
 
-Secured online: `https://movie-recruitment-task.herokuapp.com/api/swagger-ui.html`
+Secured endpoint (online): `https://movie-recruitment-task.herokuapp.com/api/swagger-ui.html`
 
 Localhost: http://localhost:8080/api/swagger-ui.html
 
