@@ -41,7 +41,7 @@ Application is available online: <br>
 
 ## REST API documentation
 
-Online: `https://movie-recruitment-task.herokuapp.com/api/swagger-ui.html`
+Secured online: `https://movie-recruitment-task.herokuapp.com/api/swagger-ui.html`
 
 Localhost: http://localhost:8080/api/swagger-ui.html
 
@@ -52,7 +52,7 @@ Postman collection of requests: `https://www.getpostman.com/collections/3100b0db
 # Endpoints:
 To make easier for mobile developer there is only one endpoint that contains most of the information needed. Payload is not big so I guess that's good idea.
 
-Online: `https://movie-recruitment-task.herokuapp.com/movies?title=The%20Fast%20and%20the%20Furious`
+Online: `https://movie-recruitment-task.herokuapp.com/api/movies?title=The%20Fast%20and%20the%20Furious`
 
 Endpoint: `GET: /movies?title="Fast and the Furious"` 
 ```json
