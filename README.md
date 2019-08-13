@@ -4,13 +4,15 @@
 
 ## Business case:  
 
-User can get listof movies that are in the cinema. 
+User can get list of movies that are in the cinema. 
 
 User can search for any movie that is out there by title and get detailed response about the movie. 
  
 Admin can use that to search for movies that could be in the cinema and add movie to the cinema repertoire (by imdbId).  
 
 Admin can also change showTime and price of the movie.
+
+<br>
 
 # Prerequisites - environment variables
 1. You need an API key. Provide it as an environment variable. http://www.omdbapi.com/apikey.aspx
@@ -23,6 +25,8 @@ export MONGO_USERNAME="your_username"
 export MONGO_PASSWORD="your_password"
 ```
 
+<br>
+
 2. When running application from IntelliJ Idea: <br>
 Go to: `/run/edit_configurations/your_configuration/enviroment_variables`  
 ```bash
@@ -32,27 +36,29 @@ MONGO_USERNAME="your_username"
 MONGO_PASSWORD="your_password"
 ```
 
-When running on Heroku and Travis export same environment variables.
+<br>
+
+When running on Heroku and Travis export above environment variables.
 
 Application is available online: <br>
-`https://movie-recruitment-task.herokuapp.com/api/movies?title=fast`
+[https://movie-recruitment-task.herokuapp.com/api/movies?title=fast](https://movie-recruitment-task.herokuapp.com/api/movies?title=fast)
 
-<br> <br> 
+<br>
 
 ## REST API documentation
 
-Secured endpoint (online): `https://movie-recruitment-task.herokuapp.com/api/swagger-ui.html`
+Secured endpoint (online): [https://movie-recruitment-task.herokuapp.com/api/swagger-ui.html](https://movie-recruitment-task.herokuapp.com/api/swagger-ui.html)
 
 Localhost: http://localhost:8080/api/swagger-ui.html
 
-Postman collection of requests: `https://www.getpostman.com/collections/3100b0db16003a4a2956`
+Postman collection of requests: [https://www.getpostman.com/collections/3100b0db16003a4a2956](https://www.getpostman.com/collections/3100b0db16003a4a2956)
 
 <br>
 
 # Endpoints:
 To make easier for mobile developer there is only one endpoint that contains most of the information needed. Payload is not big so I guess that's good idea.
 
-Online: `https://movie-recruitment-task.herokuapp.com/api/movies?title=The%20Fast%20and%20the%20Furious`
+Online: [https://movie-recruitment-task.herokuapp.com/api/movies?title=The%20Fast%20and%20the%20Furious](https://movie-recruitment-task.herokuapp.com/api/movies?title=The%20Fast%20and%20the%20Furious)
 
 Endpoint: `GET: /movies?title="Fast and the Furious"` 
 ```json
