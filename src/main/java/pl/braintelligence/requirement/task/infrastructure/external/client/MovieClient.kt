@@ -6,8 +6,8 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.web.client.RestClientException
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.util.UriComponentsBuilder
-import pl.braintelligence.requirement.task.infrastructure.external.error.ApiResponseException
-import pl.braintelligence.requirement.task.infrastructure.external.error.ErrorCode
+import pl.braintelligence.requirement.task.infrastructure.error.ApiResponseException
+import pl.braintelligence.requirement.task.infrastructure.error.ErrorCode
 import pl.braintelligence.requirement.task.infrastructure.external.client.dto.MovieApiResponse
 import pl.braintelligence.requirement.task.logger
 import java.net.URI

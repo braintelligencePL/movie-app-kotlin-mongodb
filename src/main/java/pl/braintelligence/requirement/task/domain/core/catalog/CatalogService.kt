@@ -15,11 +15,14 @@ class CatalogService(
 ) {
     fun catalogService(newCatalog: NewCatalog) = catalogRepository.save(newCatalog.name)
 
-    fun getAllCatalogs(): List<DbCatalog> = catalogRepository.findAll()
+    fun getAllCatalogs(): List<Catalog> = catalogRepository.findAll()
 
-    fun updateCatalog(catalogToUpdate: CatalogToUpdate) {
+    fun updateCatalog(catalogToUpdate: CatalogToUpdate) = catalogRepository.run {
+        updateCatalog(prepareDbCatalog(catalogToUpdate))
+    }
 
-        val dbCatalog = catalogToUpdate.run {
+    private fun prepareDbCatalog(catalogToUpdate: CatalogToUpdate): DbCatalog {
+        return catalogToUpdate.run {
             DbCatalog(
                     name = catalogName,
                     movies = movies.map {
@@ -34,8 +37,6 @@ class CatalogService(
                         )
                     })
         }
-
-        catalogRepository.updateCatalog(dbCatalog)
     }
 
     private fun fetchTitleByImdbId(id: String): String? = movieClient.getTitleByImdbId(id)?.title

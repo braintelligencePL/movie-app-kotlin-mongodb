@@ -2,11 +2,10 @@ package pl.braintelligence.requirement.task.api.catalog
 
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
-import pl.braintelligence.requirement.task.api.catalog.ApiCatalogController
 import pl.braintelligence.requirement.task.api.catalog.dto.CatalogToUpdate
 import pl.braintelligence.requirement.task.api.catalog.dto.NewCatalog
+import pl.braintelligence.requirement.task.domain.core.catalog.Catalog
 import pl.braintelligence.requirement.task.domain.core.catalog.CatalogService
-import pl.braintelligence.requirement.task.infrastructure.external.mongo.catalog.entities.DbCatalog
 
 @RestController
 @RequestMapping("/api/catalogs")
@@ -23,7 +22,7 @@ internal class CatalogController(
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     override fun getAllCatalogs(
-    ): List<DbCatalog> = catalogService.getAllCatalogs()
+    ): List<Catalog> = catalogService.getAllCatalogs()
 
     @PutMapping
     @ResponseStatus(HttpStatus.OK)

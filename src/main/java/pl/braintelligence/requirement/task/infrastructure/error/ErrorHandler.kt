@@ -1,4 +1,4 @@
-package pl.braintelligence.requirement.task.infrastructure.external.error
+package pl.braintelligence.requirement.task.infrastructure.error
 
 
 import org.springframework.http.HttpStatus

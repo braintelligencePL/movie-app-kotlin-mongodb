@@ -7,8 +7,8 @@ interface CatalogRepository {
 
     fun save(catalogName: String)
 
-    fun findAll(): List<DbCatalog>
+    fun findAll(): List<Catalog>
 
-    fun updateCatalog(catalogToUpdate: DbCatalog)
+    fun  updateCatalog(catalogToUpdate: DbCatalog)
 
 }

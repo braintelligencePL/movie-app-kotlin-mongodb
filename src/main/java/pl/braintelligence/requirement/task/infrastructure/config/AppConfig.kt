@@ -1,4 +1,4 @@
-package pl.braintelligence.requirement.task.infrastructure.internal.config
+package pl.braintelligence.requirement.task.infrastructure.config
 
 import com.google.common.base.Predicates
 import org.springframework.beans.factory.annotation.Value

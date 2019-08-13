@@ -1,4 +1,4 @@
-package pl.braintelligence.requirement.task.infrastructure.internal.config
+package pl.braintelligence.requirement.task.infrastructure.config
 
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.servlet.config.annotation.*

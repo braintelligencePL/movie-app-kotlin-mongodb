@@ -1,4 +1,4 @@
-package pl.braintelligence.requirement.task.infrastructure.external.error
+package pl.braintelligence.requirement.task.infrastructure.error
 
 class ApiResponseException(message: String, code: ErrorCode) : RuntimeException(message)
 

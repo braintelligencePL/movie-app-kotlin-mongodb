@@ -7,9 +7,10 @@ import org.springframework.data.mongodb.core.query.Update
 import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.stereotype.Component
 import org.springframework.stereotype.Repository
+import pl.braintelligence.requirement.task.domain.core.catalog.Catalog
 import pl.braintelligence.requirement.task.domain.core.catalog.CatalogRepository
-import pl.braintelligence.requirement.task.infrastructure.external.error.EntityAlreadyExist
-import pl.braintelligence.requirement.task.infrastructure.external.error.ErrorCode
+import pl.braintelligence.requirement.task.infrastructure.error.EntityAlreadyExist
+import pl.braintelligence.requirement.task.infrastructure.error.ErrorCode
 import pl.braintelligence.requirement.task.infrastructure.external.mongo.catalog.entities.DbCatalog
 
 @Repository
@@ -24,7 +25,7 @@ class CatalogRepositoryImpl(
         private val mongoOperations: MongoOperations
 ) : CatalogRepository {
 
-    override fun findAll(): List<DbCatalog> = mongo.findAll()
+    override fun findAll(): List<Catalog> = DbCatalog.toCatalogs(mongo.findAll())
 
     override fun save(catalogName: String) {
         if (mongo.existsByName(catalogName))

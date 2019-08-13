@@ -1,6 +1,6 @@
-package pl.braintelligence.requirement.task.infrastructure.internal.config
+package pl.braintelligence.requirement.task.infrastructure.config
 
-object Profiles {
+object AppProfiles {
     const val PROD = "prod"
     const val DEV = "dev"
     const val TEST = "test"

@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.data.mongodb.core.MongoTemplate
 import org.springframework.test.context.ActiveProfiles
-import pl.braintelligence.requirement.task.infrastructure.internal.config.Profiles
+import pl.braintelligence.requirement.task.infrastructure.config.AppProfiles
 import spock.lang.Specification
 
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
-@ActiveProfiles(Profiles.TEST)
+@ActiveProfiles(AppProfiles.LOCAL)
 abstract class BaseTest extends Specification implements BaseHttpMethods {
 
     @Rule
