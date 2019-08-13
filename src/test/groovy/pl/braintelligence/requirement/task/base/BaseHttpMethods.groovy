@@ -1,5 +1,6 @@
 package pl.braintelligence.requirement.task.base
 
+import org.apache.commons.codec.binary.Base64
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.core.ParameterizedTypeReference
@@ -8,12 +9,17 @@ import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpMethod
 import org.springframework.http.ResponseEntity
 
+import java.nio.charset.Charset
+
 import static org.springframework.http.HttpMethod.GET
 
 trait BaseHttpMethods {
 
     @Autowired
     TestRestTemplate restTemplate
+
+    @Autowired
+    TestRestTemplate basicAuthRestTemplate
 
     def <T> ResponseEntity<T> get(String uri, Class<T> responseBodyType) {
         return sendRequest(uri, GET, null, responseBodyType)
@@ -55,4 +61,5 @@ trait BaseHttpMethods {
         def entity = new HttpEntity<>(requestBody)
         return restTemplate.exchange(uri, method, entity, responseBodyType)
     }
+
 }

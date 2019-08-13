@@ -28,17 +28,17 @@ open class AppSecurity : WebSecurityConfigurerAdapter() {
                 .httpBasic()
     }
 
-    @Autowired
-    fun configureGlobal(authentication: AuthenticationManagerBuilder) {
-        authentication.inMemoryAuthentication()
-                .withUser("admin")
-                .password(passwordEncoder().encode("admin"))
-                .roles("ADMIN")
-                .authorities("ADMIN")
-    }
+//    @Autowired
+//    fun configureGlobal(authentication: AuthenticationManagerBuilder) {
+//        authentication.inMemoryAuthentication()
+//                .withUser("admin")
+//                .password(passwordEncoder().encode("admin"))
+//                .roles("ADMIN")
+//                .authorities("ADMIN")
+//    }
 
-    @Bean
-    open fun passwordEncoder(): PasswordEncoder {
-        return BCryptPasswordEncoder()
-    }
+//    @Bean
+//    open fun passwordEncoder(): PasswordEncoder {
+//        return BCryptPasswordEncoder()
+//    }
 }

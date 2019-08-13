@@ -9,4 +9,8 @@ movie-api:
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}/test?retryWrites=true&w=majority&serverSelectionTimeoutMS=90000&connectTimeoutMS=90000
+      uri: mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}/test?retryWrites=true&w=majority&serverSelectionTimeoutMS=10000&connectTimeoutMS=10000
+  security:
+    user:
+      name: admin
+      password: admin

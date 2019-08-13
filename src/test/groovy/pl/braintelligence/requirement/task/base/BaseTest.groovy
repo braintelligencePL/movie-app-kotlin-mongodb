@@ -1,13 +1,17 @@
 package pl.braintelligence.requirement.task.base
 
 import com.github.tomakehurst.wiremock.junit.WireMockRule
+import org.apache.commons.codec.binary.Base64
 import org.junit.Rule
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.data.mongodb.core.MongoTemplate
+import org.springframework.http.HttpHeaders
 import org.springframework.test.context.ActiveProfiles
 import pl.braintelligence.requirement.task.infrastructure.config.AppProfiles
 import spock.lang.Specification
+
+import java.nio.charset.Charset
 
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
 
