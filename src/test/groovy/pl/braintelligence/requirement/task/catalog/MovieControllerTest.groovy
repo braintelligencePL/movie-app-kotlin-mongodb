@@ -2,6 +2,7 @@ package pl.braintelligence.requirement.task.catalog
 
 import org.apache.commons.codec.binary.Base64
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.core.ParameterizedTypeReference
 import org.springframework.http.HttpEntity
@@ -26,6 +27,12 @@ class MovieControllerTest extends BaseTest {
 
     @Autowired
     TestRestTemplate authRestTemplate
+
+    @Value('${spring.security.user.name}')
+    String authUsername
+
+    @Value('${spring.security.user.password}')
+    String authPassword
 
     private ShowTimeDto showTimeDto
 
@@ -67,16 +74,16 @@ class MovieControllerTest extends BaseTest {
             name == catalogName
             with(movies[0]) {
                 title == "The Fast and the Furious"
-                imdbId = "imdbId"
+                imdbId == "imdbId"
                 showTime.time == showTimeDto.time
                 showTime.date == showTimeDto.date
-                price == "" // todo()
+                price == "price" // todo()
             }
         }
     }
 
     private HttpEntity<NewCatalog> payloadWithBasicAuthHeaders(Object object) {
-        def entity = new HttpEntity<>(object, prepareBasicAuthHeaders('admin', 'admin'))
+        def entity = new HttpEntity<>(object, prepareBasicAuthHeaders(authUsername, authPassword))
         entity
     }
 
