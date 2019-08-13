@@ -40,7 +40,7 @@ MONGO_PASSWORD="your_password"
 
 When running on Heroku and Travis export above environment variables.
 
-Application is available online: <br>
+Application is available online - wait around 20sek for instance to wake up <br>
 [`https://movie-recruitment-task.herokuapp.com/api/movies?title=fast`](https://movie-recruitment-task.herokuapp.com/api/movies?title=fast)
 
 <br>
