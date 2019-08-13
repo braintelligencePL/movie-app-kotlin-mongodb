@@ -32,7 +32,7 @@ class MovieClientStubs {
     static StubMapping stubInvalidApiKey() {
         return stubFor(get(urlMatching(VALID_URL_MOVIES))
                 .willReturn(aResponse()
-                        .withStatus(HttpStatus.UNAUTHORIZED.value())
+                        .withStatus(HttpStatus.BAD_GATEWAY.value())
                         .withHeader(HttpHeaders.CONTENT_TYPE, "application/json")))
     }
 

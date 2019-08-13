@@ -48,6 +48,7 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-data-mongodb"
     implementation "io.springfox:springfox-swagger2:2.9.2"
     implementation "io.springfox:springfox-swagger-ui:2.9.2"
+    implementation 'org.springframework.boot:spring-boot-starter-security'
 
     // Commons, utils
     implementation 'org.apache.commons:commons-lang3:3.7'
@@ -62,6 +63,7 @@ dependencies {
 //    testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:2.2.0'
     testImplementation 'com.github.tomakehurst:wiremock:2.21.0'
     testImplementation group: 'org.awaitility', name: 'awaitility-groovy', version: '3.1.0'
+
 }
 
 compileKotlin {

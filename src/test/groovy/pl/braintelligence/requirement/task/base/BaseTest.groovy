@@ -12,7 +12,7 @@ import spock.lang.Specification
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
-@ActiveProfiles(Profiles.LOCAL)
+@ActiveProfiles(Profiles.TEST)
 abstract class BaseTest extends Specification implements BaseHttpMethods {
 
     @Rule
@@ -39,5 +39,4 @@ abstract class BaseTest extends Specification implements BaseHttpMethods {
         System.setProperty('http.keepAlive', 'false')
         System.setProperty('http.maxConnections', '1')
     }
-
 }

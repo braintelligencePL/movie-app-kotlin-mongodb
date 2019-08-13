@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/movie-recruitment-task.iml" filepath="$PROJECT_DIR$/.idea/movie-recruitment-task.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/movie-recruitment-task.main.iml" filepath="$PROJECT_DIR$/.idea/modules/movie-recruitment-task.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/movie-recruitment-task.test.iml" filepath="$PROJECT_DIR$/.idea/modules/movie-recruitment-task.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pl.braintelligence.movie-recruitment-task.main.iml" filepath="$PROJECT_DIR$/.idea/modules/pl.braintelligence.movie-recruitment-task.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pl.braintelligence.movie-recruitment-task.test.iml" filepath="$PROJECT_DIR$/.idea/modules/pl.braintelligence.movie-recruitment-task.test.iml" />
     </modules>
   </component>
 </project>

@@ -1,13 +1,14 @@
-package pl.braintelligence.requirement.task.api.movie
+package pl.braintelligence.requirement.task.api.review
 
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
+import pl.braintelligence.requirement.task.api.movie.ApiReviewController
 import pl.braintelligence.requirement.task.api.review.dto.NewReviewDto
 import pl.braintelligence.requirement.task.domain.core.review.ReviewService
 
 @RestController
-@RequestMapping("/reviews")
-internal class RatingController(
+@RequestMapping("/api/reviews")
+internal class ReviewController(
         private val reviewService: ReviewService
 ) : ApiReviewController {
 

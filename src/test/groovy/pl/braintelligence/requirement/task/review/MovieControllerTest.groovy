@@ -18,10 +18,10 @@ class MovieControllerTest extends BaseTest {
         stubMovieApiResponse()
 
         and: "new review created"
-        post("/reviews", newReview)
+        post("/api/reviews", newReview)
 
         when: "get movie by title"
-        def response = get("/movies?title=fast", Movie)
+        def response = get("/api/movies?title=fast", Movie)
 
         then:
         with(response.body) {

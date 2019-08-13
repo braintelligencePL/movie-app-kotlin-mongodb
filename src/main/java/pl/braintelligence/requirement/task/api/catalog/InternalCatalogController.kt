@@ -2,28 +2,21 @@ package pl.braintelligence.requirement.task.api.catalog
 
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
-import pl.braintelligence.requirement.task.api.catalog.ApiCatalogController
 import pl.braintelligence.requirement.task.api.catalog.dto.CatalogToUpdate
 import pl.braintelligence.requirement.task.api.catalog.dto.NewCatalog
 import pl.braintelligence.requirement.task.domain.core.catalog.CatalogService
-import pl.braintelligence.requirement.task.infrastructure.external.mongo.catalog.entities.DbCatalog
 
 @RestController
-@RequestMapping("/api/catalogs")
-internal class CatalogController(
+@RequestMapping("/internal/catalogs")
+internal class InternalCatalogController(
         private val catalogService: CatalogService
-) : ApiCatalogController {
+) : ApiInternalCatalogController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     override fun createCatalog(
             @RequestBody newCatalog: NewCatalog
     ) = catalogService.catalogService(newCatalog)
-
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    override fun getAllCatalogs(
-    ): List<DbCatalog> = catalogService.getAllCatalogs()
 
     @PutMapping
     @ResponseStatus(HttpStatus.OK)

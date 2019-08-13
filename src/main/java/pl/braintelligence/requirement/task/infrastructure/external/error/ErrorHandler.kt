@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice
 import pl.braintelligence.requirement.task.logger
 import javax.servlet.http.HttpServletRequest
 
-
 @RestControllerAdvice
 internal class ErrorHandler {
 

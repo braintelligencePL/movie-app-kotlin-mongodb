@@ -13,7 +13,7 @@ class MovieControllerTest extends BaseTest {
         stubMovieApiResponse()
 
         when: "queering for movie by title"
-        def response = get("/movies?title=fast", Movie)
+        def response = get("/api/movies?title=fast", Movie)
 
         then:
         with(response.body) {

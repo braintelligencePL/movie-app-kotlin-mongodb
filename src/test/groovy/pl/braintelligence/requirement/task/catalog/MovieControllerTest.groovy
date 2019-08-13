@@ -21,10 +21,10 @@ class MovieControllerTest extends BaseTest {
         def newCatalog = new NewCatalog("catalog name")
 
         and: "create new catalog"
-        post("/catalogs", newCatalog)
+        post("/api/catalogs", newCatalog)
 
         when:
-        def response = get("/catalogs", new ParameterizedTypeReference<List<DbCatalog>>() {})
+        def response = get("/api/catalogs", new ParameterizedTypeReference<List<DbCatalog>>() {})
 
         then:
         response.body[0].name == newCatalog.name
@@ -33,7 +33,7 @@ class MovieControllerTest extends BaseTest {
     def "Should update existing catalog and browse it"() {
         given: "prepare new catalog"
         def catalogName = "catalog name"
-        post("/catalogs", new NewCatalog(catalogName))
+        post("/api/catalogs", new NewCatalog(catalogName))
 
         and:
         def catalogToUpdate = prepareCatalogToUpdate(catalogName)
@@ -43,7 +43,7 @@ class MovieControllerTest extends BaseTest {
 
         when: "catalog is updated"
         put("/catalogs", catalogToUpdate)
-        def response = get("/catalogs", new ParameterizedTypeReference<List<DbCatalog>>() {})
+        def response = get("/api/catalogs", new ParameterizedTypeReference<List<DbCatalog>>() {})
 
         then:
         response != null

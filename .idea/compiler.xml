@@ -7,6 +7,8 @@
     <bytecodeTargetLevel>
       <module name="movie-recruitment-task.main" target="1.8" />
       <module name="movie-recruitment-task.test" target="1.8" />
+      <module name="pl.braintelligence.movie-recruitment-task.main" target="1.8" />
+      <module name="pl.braintelligence.movie-recruitment-task.test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
