@@ -23,11 +23,18 @@ internal class ErrorHandler {
                 .body(ErrorMessage(ErrorCode.API_IS_NOT_AVAILABLE))
     }
 
-    @ExceptionHandler(EntityAlreadyExist::class)
-    fun handleMongoException(ex: EntityAlreadyExist, request: HttpServletRequest): ResponseEntity<ErrorMessage> {
+    @ExceptionHandler(EntityAlreadyExistException::class)
+    fun handleEntityAlreadyExistException(ex: EntityAlreadyExistException, request: HttpServletRequest): ResponseEntity<ErrorMessage> {
         log.error(createLog(request, UNPROCESSABLE_ENTITY, ErrorCode.ENTITY_ALREADY_EXIST), ex)
         return status(UNPROCESSABLE_ENTITY)
                 .body(ErrorMessage(ErrorCode.ENTITY_ALREADY_EXIST))
+    }
+
+    @ExceptionHandler(MissingEntityException::class)
+    fun handleMissingEntityException(ex: MissingEntityException, request: HttpServletRequest): ResponseEntity<ErrorMessage> {
+        log.error(createLog(request, UNPROCESSABLE_ENTITY, ErrorCode.MISSING_ENTITY), ex)
+        return status(UNPROCESSABLE_ENTITY)
+                .body(ErrorMessage(ErrorCode.MISSING_ENTITY))
     }
 
     private fun createLog(

@@ -9,8 +9,9 @@ import org.springframework.stereotype.Component
 import org.springframework.stereotype.Repository
 import pl.braintelligence.requirement.task.domain.core.catalog.Catalog
 import pl.braintelligence.requirement.task.domain.core.catalog.CatalogRepository
-import pl.braintelligence.requirement.task.infrastructure.error.EntityAlreadyExist
+import pl.braintelligence.requirement.task.infrastructure.error.EntityAlreadyExistException
 import pl.braintelligence.requirement.task.infrastructure.error.ErrorCode
+import pl.braintelligence.requirement.task.infrastructure.error.MissingEntityException
 import pl.braintelligence.requirement.task.infrastructure.external.mongo.catalog.entities.DbCatalog
 
 @Repository
@@ -20,7 +21,7 @@ interface ICatalogMongoCatalogRepository : MongoRepository<DbCatalog, String> {
 }
 
 @Component
-class CatalogRepositoryImpl(
+open class CatalogRepositoryImpl(
         private val mongo: ICatalogMongoCatalogRepository,
         private val mongoOperations: MongoOperations
 ) : CatalogRepository {
@@ -29,12 +30,15 @@ class CatalogRepositoryImpl(
 
     override fun save(catalogName: String) {
         if (mongo.existsByName(catalogName))
-            throw EntityAlreadyExist("Catalog with name='$catalogName' already exist", ErrorCode.ENTITY_ALREADY_EXIST)
+            throw EntityAlreadyExistException("Catalog with name='$catalogName' already exist", ErrorCode.ENTITY_ALREADY_EXIST)
 
         mongo.save(DbCatalog(catalogName))
     }
 
     override fun updateCatalog(dbCatalog: DbCatalog) {
+        if (!mongo.existsByName(dbCatalog.name))
+            throw MissingEntityException("Catalog with name='${dbCatalog.name}' doesnt't exists", ErrorCode.MISSING_ENTITY)
+
         val query = Query()
         query.addCriteria(Criteria.where("name").`is`(dbCatalog.name))
 

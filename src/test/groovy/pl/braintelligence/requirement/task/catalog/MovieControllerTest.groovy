@@ -14,6 +14,7 @@ import pl.braintelligence.requirement.task.api.catalog.dto.NewCatalog
 import pl.braintelligence.requirement.task.api.catalog.dto.ShowTimeDto
 import pl.braintelligence.requirement.task.base.BaseTest
 import pl.braintelligence.requirement.task.domain.core.catalog.Catalog
+import pl.braintelligence.requirement.task.infrastructure.error.ErrorCode
 import pl.braintelligence.requirement.task.infrastructure.external.mongo.catalog.entities.DbCatalog
 
 import java.nio.charset.Charset
@@ -80,6 +81,21 @@ class MovieControllerTest extends BaseTest {
                 price == "price" // todo()
             }
         }
+    }
+
+    def "Should not allow to update catalog when doesn't exists"() {
+        given: "prepare new catalog"
+        def catalogToUpdate = prepareCatalogToUpdate(UUID.randomUUID().toString())
+
+        and:
+        stubMovieApiResponseSearchById()
+
+        when: "update catalog"
+        def response = authRestTemplate.exchange("/internal/catalogs", HttpMethod.PUT, payloadWithBasicAuthHeaders(catalogToUpdate), Object)
+
+        then:
+        response.statusCode.is4xxClientError()
+        response.body.code == ErrorCode.MISSING_ENTITY.toString()
     }
 
     private HttpEntity<NewCatalog> payloadWithBasicAuthHeaders(Object object) {

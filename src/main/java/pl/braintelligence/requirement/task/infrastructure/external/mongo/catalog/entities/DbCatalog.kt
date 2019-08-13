@@ -10,7 +10,7 @@ import java.time.LocalDate
 import java.time.LocalTime
 
 @Document(collection = Collections.CATALOGS_COLLECTION)
-class DbCatalog(
+class DbCatalog @JvmOverloads constructor(
         val name: String,
         val movies: List<DbCinemaMovie> = emptyList()
 ) {

@@ -62,6 +62,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 //    testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:2.2.0'
     testImplementation 'com.github.tomakehurst:wiremock:2.21.0'
+    testImplementation "io.mockk:mockk:1.9.3"
     testImplementation group: 'org.awaitility', name: 'awaitility-groovy', version: '3.1.0'
 
 }
