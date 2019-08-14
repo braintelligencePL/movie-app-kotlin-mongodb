@@ -12,8 +12,8 @@ data class Movie(
         val movieTime: String,
         val description: String,
         val releaseDate: String,
-        val externalRatings: MutableList<ExternalRating>,
-        var internalReviews: MutableList<InternalReview>
+        val externalRatings: List<ExternalRating>,
+        var internalReviews: List<InternalReview>
 ) {
     companion object {
         fun toMovie(movieApiResponse: MovieApiResponse): Movie = movieApiResponse.run {
