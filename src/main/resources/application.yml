@@ -12,5 +12,5 @@ spring:
       uri: mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}/prod?retryWrites=true&w=majority&serverSelectionTimeoutMS=10000&connectTimeoutMS=10000
   security:
     user:
-      name: admin
-      password: admin
+      name: ${AUTH_USERNAME}
+      password: ${AUTH_PASSWORD}
