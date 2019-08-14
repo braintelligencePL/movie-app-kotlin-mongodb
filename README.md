@@ -114,7 +114,7 @@ Endpoint: `GET: /catalogs` - get all catalogs
                     "time": [ 11, 54 ],
                     "date": [ 2019, 11, 25 ]
                 },
-                "price": "123" // todo(BigDecimal and Validation)
+                "price": "123" 
             }
         ]
     }
@@ -146,7 +146,7 @@ Secured Endpoint `PUT: /catalogs` - update or add movies to cinema repertoire
                     25
                 ]
             },
-            "price": "123" // todo(BigDecimal and Validation)
+            "price": "123" 
         }
     ]
 }

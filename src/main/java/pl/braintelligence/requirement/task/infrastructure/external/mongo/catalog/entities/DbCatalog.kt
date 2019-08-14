@@ -1,6 +1,7 @@
 package pl.braintelligence.requirement.task.infrastructure.external.mongo.catalog.entities
 
 import org.springframework.data.mongodb.core.mapping.Document
+import pl.braintelligence.requirement.task.domain.Price
 import pl.braintelligence.requirement.task.domain.core.catalog.Catalog
 import pl.braintelligence.requirement.task.domain.core.catalog.CinemaMovie
 import pl.braintelligence.requirement.task.domain.core.catalog.ShowTime
@@ -30,7 +31,7 @@ class DbCinemaMovie(
         val title: String?,
         val imdbId: String,
         val showTime: DbShowTime,
-        val price: String
+        val price: Price
 ) {
     companion object {
         fun toMovies(movies: List<DbCinemaMovie>): List<CinemaMovie> = movies.map { toMovie(it) }
@@ -40,7 +41,7 @@ class DbCinemaMovie(
                     title = title,
                     imdbId = imdbId,
                     showTime = toShowTime(showTime),
-                    price = price
+                    price = Price(price.value, price.currency)
             )
         }
     }

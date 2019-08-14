@@ -12,7 +12,12 @@ data class CatalogToUpdate(
 class MovieCatalog(
         val imdbId: String,
         val showTime: ShowTimeDto,
-        val price: String
+        val price: PriceDto
+)
+
+data class PriceDto(
+        val value: String,
+        val currency: String
 )
 
 class ShowTimeDto(

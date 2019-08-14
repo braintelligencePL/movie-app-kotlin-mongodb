@@ -8,11 +8,9 @@ import org.springframework.core.ParameterizedTypeReference
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpMethod
-import pl.braintelligence.requirement.task.api.catalog.dto.CatalogToUpdate
-import pl.braintelligence.requirement.task.api.catalog.dto.MovieCatalog
-import pl.braintelligence.requirement.task.api.catalog.dto.NewCatalog
-import pl.braintelligence.requirement.task.api.catalog.dto.ShowTimeDto
+import pl.braintelligence.requirement.task.api.catalog.dto.*
 import pl.braintelligence.requirement.task.base.BaseTest
+import pl.braintelligence.requirement.task.domain.Price
 import pl.braintelligence.requirement.task.domain.core.catalog.Catalog
 import pl.braintelligence.requirement.task.infrastructure.error.ErrorCode
 import pl.braintelligence.requirement.task.infrastructure.external.mongo.catalog.entities.DbCatalog
@@ -78,7 +76,8 @@ class MovieControllerTest extends BaseTest {
                 imdbId == "imdbId"
                 showTime.time == showTimeDto.time
                 showTime.date == showTimeDto.date
-                price == "price" // todo()
+                price.value == "123".toBigDecimal()
+                price.currency == Currency.getInstance("PLN")
             }
         }
     }
@@ -98,6 +97,21 @@ class MovieControllerTest extends BaseTest {
         response.body.code == ErrorCode.MISSING_ENTITY.toString()
     }
 
+//    def "Should not update catalog when price is incorrect"() {
+//        given: "prepare new catalog"
+//        def catalogToUpdate = prepareCatalogToUpdate(UUID.randomUUID().toString())
+//
+//        and:
+//        stubMovieApiResponseSearchById()
+//
+//        when: "update catalog"
+//        def response = authRestTemplate.exchange("/internal/catalogs", HttpMethod.PUT, payloadWithBasicAuthHeaders(catalogToUpdate), Object)
+//
+//        then:
+//        response.statusCode.is4xxClientError()
+//        response.body.code == ErrorCode.MISSING_ENTITY.toString()
+//    }
+
     private HttpEntity<NewCatalog> payloadWithBasicAuthHeaders(Object object) {
         def entity = new HttpEntity<>(object, prepareBasicAuthHeaders(authUsername, authPassword))
         entity
@@ -110,7 +124,20 @@ class MovieControllerTest extends BaseTest {
                         new MovieCatalog(
                                 "imdbId",
                                 new ShowTimeDto(LocalTime.of(1, 1), LocalDate.of(2000, 1, 1)),
-                                "price"
+                                new PriceDto("123", "PLN")
+                        )
+                )
+        )
+    }
+
+    private CatalogToUpdate prepareInvalidCatalogToUpdate(String catalogName) {
+        new CatalogToUpdate(
+                catalogName,
+                asList(
+                        new MovieCatalog(
+                                "imdbId",
+                                new ShowTimeDto(LocalTime.of(1, 1), LocalDate.of(2000, 1, 1)),
+                                new Price("123asd", "PLN")
                         )
                 )
         )
