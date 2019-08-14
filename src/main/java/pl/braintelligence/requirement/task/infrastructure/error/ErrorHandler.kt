@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.http.ResponseEntity.status
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
+import pl.braintelligence.requirement.task.domain.exceptions.InvalidPriceException
 import pl.braintelligence.requirement.task.logger
 import javax.servlet.http.HttpServletRequest
 
