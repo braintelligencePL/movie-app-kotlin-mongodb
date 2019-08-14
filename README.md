@@ -191,4 +191,5 @@ Secured Endpoint `PUT: /catalogs` - update or add movies to cinema repertoire
 - Standardize the format of returned movie-api ratings e.g. 5/10
 - Create AverageRating for InternalRating - possible computed offline. 
 - Add pagination for internalReviews (maybe introduce completely new endpoint for it, because extending already existing functionality to paging would make this one endpoint a bit too complex).
-- Logout from spring security 
+- Logout from spring security
+- Do more tests of edge cases
