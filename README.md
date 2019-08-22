@@ -10,6 +10,8 @@ User can search for any movie that is out there by title and get detailed respon
  
 Admin can use that to search for movies that could be in the cinema and add movie to the cinema repertoire (by imdbId).  
 
+Admin can create a catalog of movies (cinema repertoire) with showTime and price.  
+
 Admin can also change showTime and price of the movie.
 
 <br>
