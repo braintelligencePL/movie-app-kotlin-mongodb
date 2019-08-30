@@ -1,6 +1,6 @@
 # Movie application
 
-#### [![Build Status](https://travis-ci.org/braintelligencePL/movie-recruitment-task.svg?branch=master)](https://travis-ci.org/braintelligencePL/movie-recruitment-task)
+#### [![Build Status](https://travis-ci.org/braintelligencePL/movie-application-kotlin-mongodb.svg?branch=master)](https://travis-ci.org/braintelligencePL/movie-application-kotlin-mongodb)
 
 ## Business case:  
 
